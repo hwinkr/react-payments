@@ -1,5 +1,0 @@
-import{j as m}from"./styled-components.browser.esm-DJlf8wgo.js";import{C as x}from"./index-4lsL4J6Z.js";import{C as f}from"./Caption-CINxdO7a.js";import{r as g}from"./index-CsdIBAqE.js";import{f as b}from"./index-2ywIqtt-.js";import"./Label--eTZwL6Y.js";import"./Input-D4uOsqIB.js";import"./card-app-D2z3bZa1.js";const S={title:"CardNumberInput",component:x,parameters:{layout:"centered"},decorators:[(e,n)=>{const[p,u]=g.useState(["","","",""]),d=(c,i)=>{u(C=>{const t=[...C];return t[c]=i,t})};return m.jsx(e,{args:{...n.args,cardNumbers:p,handleCardNumberChange:d}})}],tags:["autodocs"],args:{cardNumbers:["","","",""],handleCardNumberChange:b()}},r={args:{errorCaption:e=>m.jsx(f,{text:e,type:"error"})}};var a,o,s;r.parameters={...r.parameters,docs:{...(a=r.parameters)==null?void 0:a.docs,source:{originalSource:`{
-  args: {
-    errorCaption: (errorText: string) => <Caption text={errorText} type="error" />
-  }
-}`,...(s=(o=r.parameters)==null?void 0:o.docs)==null?void 0:s.source}}};const T=["Default"];export{r as Default,T as __namedExportsOrder,S as default};

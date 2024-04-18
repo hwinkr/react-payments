@@ -1,0 +1,5 @@
+import{j as n}from"./jsx-runtime-BnIj46N_.js";import{C as f}from"./Caption-Bf30slGY.js";import{r as g}from"./index-CsdIBAqE.js";import{f as D}from"./index-2ywIqtt-.js";import{E}from"./index-D3-AgeyY.js";import"./styled-components.browser.esm-BniCmjBm.js";import"./Label-CjMvsCqX.js";import"./Input-BIqY51RL.js";import"./card-app-D2z3bZa1.js";const O={title:"ExpirationDateInput",component:E,parameters:{layout:"centered"},decorators:[(t,p)=>{const[i,m]=g.useState(["",""]),x=(c,u)=>{m(d=>{const e=[...d];return e[c]=u,e})};return n.jsx(t,{args:{...p.args,expirationDate:i,handleExpirationDateChange:x}})}],tags:["autodocs"],args:{expirationDate:["",""],handleExpirationDateChange:D()}},r={args:{errorCaption:t=>n.jsx(f,{text:t,type:"error"})}};var a,o,s;r.parameters={...r.parameters,docs:{...(a=r.parameters)==null?void 0:a.docs,source:{originalSource:`{
+  args: {
+    errorCaption: (errorText: string) => <Caption text={errorText} type="error" />
+  }
+}`,...(s=(o=r.parameters)==null?void 0:o.docs)==null?void 0:s.source}}};const R=["Default"];export{r as Default,R as __namedExportsOrder,O as default};

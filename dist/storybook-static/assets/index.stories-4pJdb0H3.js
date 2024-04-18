@@ -1,0 +1,5 @@
+import{j as s}from"./jsx-runtime-BnIj46N_.js";import{C as d}from"./index-Dw8HS8QM.js";import{C as u}from"./Caption-Bf30slGY.js";import{r as C}from"./index-CsdIBAqE.js";import{f as x}from"./index-2ywIqtt-.js";import"./styled-components.browser.esm-BniCmjBm.js";import"./Label-CjMvsCqX.js";import"./Input-BIqY51RL.js";import"./card-app-D2z3bZa1.js";const E={title:"CardOwnerNameInput",component:d,parameters:{layout:"centered"},decorators:[(e,n)=>{const[m,p]=C.useState(""),i=c=>{p(c)};return s.jsx(e,{args:{...n.args,ownerName:m,handleCardOwnerNameChange:i}})}],tags:["autodocs"],args:{ownerName:"",handleCardOwnerNameChange:x()}},r={args:{errorCaption:e=>s.jsx(u,{text:e,type:"error"})}};var t,a,o;r.parameters={...r.parameters,docs:{...(t=r.parameters)==null?void 0:t.docs,source:{originalSource:`{
+  args: {
+    errorCaption: (errorText: string) => <Caption text={errorText} type="error" />
+  }
+}`,...(o=(a=r.parameters)==null?void 0:a.docs)==null?void 0:o.source}}};const D=["Default"];export{r as Default,D as __namedExportsOrder,E as default};

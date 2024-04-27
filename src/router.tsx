@@ -30,7 +30,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/react-payments/dist/card-app",
+    basename: "/react-payments/dist",
   }
 );
 

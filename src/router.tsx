@@ -25,12 +25,12 @@ const router = createBrowserRouter(
       ),
     },
     {
-      path: "*",
+      path: "/*",
       element: <NotFoundPage />,
     },
   ],
   {
-    basename: "/react-payments/dist",
+    basename: "/react-payments/dist/",
   }
 );
 

@@ -6,27 +6,32 @@ import CardFormPage from "./pages/CardFormPage";
 import CardFormSuccessPage from "./pages/CardFormSuccessPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: (
+        <CardAddFormProvider>
+          <CardFormPage />
+        </CardAddFormProvider>
+      ),
+    },
+    {
+      path: "/complete",
+      element: (
+        <CardAddFormProvider>
+          <CardFormSuccessPage />
+        </CardAddFormProvider>
+      ),
+    },
+    {
+      path: "*",
+      element: <NotFoundPage />,
+    },
+  ],
   {
-    path: "/",
-    element: (
-      <CardAddFormProvider>
-        <CardFormPage />
-      </CardAddFormProvider>
-    ),
-  },
-  {
-    path: "/complete",
-    element: (
-      <CardAddFormProvider>
-        <CardFormSuccessPage />
-      </CardAddFormProvider>
-    ),
-  },
-  {
-    path: "*",
-    element: <NotFoundPage />,
-  },
-]);
+    basename: "/react-payments/dist",
+  }
+);
 
 export default router;

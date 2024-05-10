@@ -35,7 +35,7 @@ interface FormDescription {
 }
 
 type CardFormAttribute = {
-  [key in CardFormField]: FormDescription;
+  [key in CardFormField | "cardNumbers"]: FormDescription;
 };
 
 export const CARD_FORM_ATTRIBUTES: CardFormAttribute = {

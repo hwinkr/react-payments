@@ -12,9 +12,9 @@ import { checkImage, errorCard } from "../assets/image";
 const CardFormSuccessPage = () => {
   const navigate = useNavigate();
 
-  const { formState, dispatch, isFormInputCompleted } = useCardAddForm();
+  const { formState, cardNumbers, dispatch, isFormInputCompleted } = useCardAddForm();
 
-  const { first } = formState.cardNumbers.value;
+  const first = cardNumbers[0];
   const cardCompany = formState.cardCompany.value;
 
   const onClick = () => {

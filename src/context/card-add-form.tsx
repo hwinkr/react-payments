@@ -6,6 +6,12 @@ import { FormAction } from "../components/providers/CardAddFormProvider/cardAddF
 interface FormContextType {
   formState: CardAddFormState;
   dispatch: React.Dispatch<FormAction>;
+  cardNumbers: string[];
+  handleCardNumberChange: (value: string) => void;
+  validationResult: {
+    isValid: boolean;
+    errorText: string;
+  };
 }
 
 const FormContext = createContext<FormContextType | undefined>(undefined);

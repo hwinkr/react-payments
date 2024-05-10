@@ -4,7 +4,6 @@ import FormContext from "../context/card-add-form";
 import {
   validateCVCNumberInputCompleted,
   validateCardCompanySelectCompleted,
-  validateCardNumbersInputCompleted,
   validateCardOwnerInputCompleted,
   validateCardPasswordInputCompleted,
   validateExpirationDateInputCompleted,
@@ -17,11 +16,15 @@ const useCardAddForm = () => {
     throw new Error("useFormContext must be used within a FormProvider");
   }
 
-  const { formState, dispatch } = context;
+  const {
+    formState,
+    dispatch,
+    cardNumbers,
+    validationResult,
+    handleCardNumberChange,
+  } = context;
 
-  const isCardNumbersInputCompleted = validateCardNumbersInputCompleted(
-    formState.cardNumbers.value
-  );
+  const isCardNumbersInputCompleted = validationResult.isValid;
 
   const isCardCompanySelectCompleted = validateCardCompanySelectCompleted(
     formState.cardCompany.value
@@ -54,6 +57,9 @@ const useCardAddForm = () => {
   return {
     formState,
     dispatch,
+    cardNumbers,
+    validationResult,
+    handleCardNumberChange,
     isCardNumbersInputCompleted,
     isCardCompanySelectCompleted,
     isExpirationDateInputCompleted,

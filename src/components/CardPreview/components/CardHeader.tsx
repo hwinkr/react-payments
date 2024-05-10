@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { CardNumberKeys } from "../../../types/card";
 import { decideCardLogo } from "../CardPreview.utils";
 
 interface CardHeaderProps {
-  value: Record<CardNumberKeys, string>;
+  value: string[];
 }
 
 const CardHeader = ({ value }: CardHeaderProps) => {

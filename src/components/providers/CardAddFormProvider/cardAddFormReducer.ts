@@ -2,21 +2,6 @@ import { CardCompany } from "../../../constants/card-app";
 import { CardAddFormState } from "../../../types/card";
 
 export const initialCardFormState: CardAddFormState = {
-  cardNumbers: {
-    value: {
-      first: "",
-      second: "",
-      third: "",
-      fourth: "",
-    },
-    errorState: {
-      first: false,
-      second: false,
-      third: false,
-      fourth: false,
-    },
-    displayed: false,
-  },
   cardCompany: {
     value: "기본카드",
     errorState: false,
@@ -55,7 +40,7 @@ export const initialCardFormState: CardAddFormState = {
 };
 
 export type FormAction =
-  | { type: "SET_CARD_NUMBERS"; subfield: string; value: string }
+  // | { type: "SET_CARD_NUMBERS"; subfield: string; value: string }
   | { type: "SET_CARD_COMPANY"; value: CardCompany }
   | {
       type: "SET_EXPIRATION_DATE";
@@ -67,7 +52,7 @@ export type FormAction =
   | { type: "SET_PASSWORD"; value: string }
   | {
       type: "SET_ERROR_WITH_SUBFIELD";
-      field: "cardNumbers" | "expirationDate" | "ownerName";
+      field: "expirationDate" | "ownerName";
       subField: string;
       isValid: boolean;
     }
@@ -89,17 +74,17 @@ export const cardAddFormReducer = (
   action: FormAction
 ): CardAddFormState => {
   switch (action.type) {
-    case "SET_CARD_NUMBERS":
-      return {
-        ...state,
-        cardNumbers: {
-          ...state.cardNumbers,
-          value: {
-            ...state.cardNumbers.value,
-            [action.subfield]: action.value,
-          },
-        },
-      };
+    // case "SET_CARD_NUMBERS":
+    //   return {
+    //     ...state,
+    //     cardNumbers: {
+    //       ...state.cardNumbers,
+    //       value: {
+    //         ...state.cardNumbers.value,
+    //         [action.subfield]: action.value,
+    //       },
+    //     },
+    //   };
     case "SET_CARD_COMPANY":
       return {
         ...state,

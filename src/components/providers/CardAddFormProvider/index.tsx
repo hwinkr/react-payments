@@ -5,6 +5,7 @@ import FormContext from "../../../context/card-add-form";
 
 import { cardAddFormReducer, initialCardFormState } from "./cardAddFormReducer";
 import CardPageLayout from "../../layout/CardPageLayout";
+import { useCardNumbers } from "hook-simo-harry";
 
 const CardAddFormProvider = () => {
   const [formState, dispatch] = useReducer(
@@ -12,8 +13,19 @@ const CardAddFormProvider = () => {
     initialCardFormState
   );
 
+  const { cardNumbers, validationResult, handleCardNumberChange } =
+    useCardNumbers();
+
   return (
-    <FormContext.Provider value={{ formState, dispatch }}>
+    <FormContext.Provider
+      value={{
+        formState,
+        dispatch,
+        cardNumbers,
+        validationResult,
+        handleCardNumberChange,
+      }}
+    >
       <CardPageLayout>
         <Outlet />
       </CardPageLayout>

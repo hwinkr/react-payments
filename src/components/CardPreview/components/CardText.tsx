@@ -1,5 +1,4 @@
 import styled, { CSSProperties } from "styled-components";
-import { ellipse } from "../../../assets/image";
 
 interface CardTextProps {
   text: string;
@@ -9,22 +8,14 @@ interface CardTextProps {
 const CardText = ({ text, type }: CardTextProps) => {
   const width = type === "longText" ? "170px" : "40px";
 
-  return (
-    <StyledCardText width={width}>
-      {type === "password"
-        ? Array.from({ length: text.length }, (_, index) => (
-            <StyledEllipse key={index} src={ellipse} />
-          ))
-        : text}
-    </StyledCardText>
-  );
+  return <StyledCardText width={width}>{text}</StyledCardText>;
 };
 
 export default CardText;
 
 const StyledCardText = styled.span<{ width: CSSProperties["width"] }>`
   height: 20px;
-  width: ${({ width }) => width};
+  width: 100%;
 
   display: flex;
   justify-content: flex-start;
@@ -36,9 +27,9 @@ const StyledCardText = styled.span<{ width: CSSProperties["width"] }>`
   letter-spacing: 2px;
 `;
 
-const StyledEllipse = styled.img`
-  height: 4px;
-  width: 4px;
+// const StyledEllipse = styled.img`
+//   height: 4px;
+//   width: 4px;
 
-  margin-right: 5px;
-`;
+//   margin-right: 5px;
+// `;

@@ -1,32 +1,25 @@
-import React from "react";
-
 import useCardAddFormField from "../../hooks/useCardAddFormField";
 
 import FormField from "../FormField";
-import Select from "../Select";
 
-import {
-  CARD_COMPANIES,
-  CARD_FORM_ATTRIBUTES,
-  CardCompany,
-  VALIDATION_MESSAGES,
-} from "../../constants/card-app";
+import { CARD_FORM_ATTRIBUTES, CardCompany, VALIDATION_MESSAGES } from "../../constants/card-app";
 
-import { isArrayElement } from "../../types/type-guard";
+import useModal from "../../hooks/useModal";
+import { Modal } from "harrysimodal";
+import CardCompanies from "../CardCompanies";
 
 const CardCompanySelectField = () => {
-  const { isValidFormField, handleFormFieldFocus, dispatch } =
-    useCardAddFormField("cardCompany");
+  const { isModalOpen, openModal, closeModal } = useModal(false);
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = event.target;
+  const { isValidFormField, handleFormFieldFocus, dispatch } = useCardAddFormField("cardCompany");
 
-    if (!isArrayElement<CardCompany>(CARD_COMPANIES, value)) return;
-
+  const handleCardCompanyChange = (company: CardCompany) => {
     dispatch({
       type: "SET_CARD_COMPANY",
-      value: value,
+      value: company,
     });
+
+    closeModal();
   };
 
   const { query, caption } = CARD_FORM_ATTRIBUTES["cardCompany"];
@@ -35,19 +28,23 @@ const CardCompanySelectField = () => {
     <FormField>
       <FormField.InputTitle text={query} />
       <FormField.InfoText textType="caption" text={caption} />
-      <FormField.InputContent>
-        <Select
-          autoFocus
-          onFocus={handleFormFieldFocus}
-          options={CARD_COMPANIES}
-          placeholder="카드사를 선택해 주세요"
-          onSelect={handleSelectChange}
-        />
-      </FormField.InputContent>
-      <FormField.InfoText
-        textType="error"
-        text={isValidFormField ? "" : VALIDATION_MESSAGES.invalidOwnerName}
-      />
+
+      <Modal.ModalButton width="full" theme="dark" autoFocus onFocus={handleFormFieldFocus} onClick={openModal}>
+        카드사 선택하기
+      </Modal.ModalButton>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal} device="mobile">
+        <Modal.ModalContent size="small">
+          <Modal.ModalHeader>
+            <Modal.ModalTitle text="카드사 선택" />
+            <Modal.ModalCloseButton onCloseButtonClick={closeModal} />
+          </Modal.ModalHeader>
+
+          <CardCompanies handleCardCompanyChange={handleCardCompanyChange} />
+        </Modal.ModalContent>
+      </Modal>
+
+      <FormField.InfoText textType="error" text={isValidFormField ? "" : VALIDATION_MESSAGES.invalidOwnerName} />
     </FormField>
   );
 };

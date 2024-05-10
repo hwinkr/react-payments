@@ -1,33 +1,32 @@
-import { validateCardNumbersInputCompleted } from "../../validators/cardAddFormValidator";
-
 import { visaCard } from "../../assets/image";
 import { masterCard } from "../../assets/image";
 
 import { CARD_NUMBER } from "../../constants/card-app";
 
-import { CardNumberKeys } from "../../types/card";
+const isVisaCard = (cardNumber: string[]) => {
+  if (cardNumber.length < 1) return false;
 
-const isVisaCard = (cardNumber: string) => {
-  return parseInt(cardNumber[0], 10) === CARD_NUMBER.visaStartNumber;
+  const first = cardNumber[0];
+
+  return parseInt(first[0], 10) === CARD_NUMBER.visaStartNumber;
 };
 
-const isMasterCard = (cardNumber: string) => {
-  if (cardNumber.length < 2) return false;
+const isMasterCard = (cardNumber: string[]) => {
+  if (cardNumber.length < 1) return false;
 
-  const slicedCardNumber = parseInt(cardNumber.slice(0, 2), 10);
+  const first = cardNumber[0];
 
-  return (
-    slicedCardNumber >= CARD_NUMBER.minMasterNumber &&
-    slicedCardNumber <= CARD_NUMBER.maxMasterNumber
-  );
+  if (first.length < 2) return false;
+
+  const slicedCardNumber = parseInt(first.slice(0, 2), 10);
+
+  return slicedCardNumber >= CARD_NUMBER.minMasterNumber && slicedCardNumber <= CARD_NUMBER.maxMasterNumber;
 };
 
-export const decideCardLogo = (value: Record<CardNumberKeys, string>) => {
-  if (!validateCardNumbersInputCompleted(value)) return null;
+export const decideCardLogo = (value: string[]) => {
+  if (isVisaCard(value)) return visaCard;
 
-  if (isVisaCard(value.first)) return visaCard;
-
-  if (isMasterCard(value.first)) return masterCard;
+  if (isMasterCard(value)) return masterCard;
 
   return null;
 };
